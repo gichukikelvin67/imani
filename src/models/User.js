@@ -1,7 +1,7 @@
 import mongoose from "mongoose";
 const userSchema=new mongoose.Schema(
     {
-        nam:{
+        name:{
             type:String,
             required:true,
             trim:true,
@@ -50,6 +50,5 @@ const userSchema=new mongoose.Schema(
         versionKey:false,
     }
 )
-userSchema.index({email:1},{unique:true});
 const User=mongoose.model("User",userSchema);
 export default User;

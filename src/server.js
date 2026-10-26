@@ -5,6 +5,7 @@ import cors from "cors";
 import helmet from "helmet";
 import cookieParser from "cookie-parser";
 import rateLimit from "express-rate-limit";
+import authRoutes from "./routes/authRoutes.js";
 
 import { connectDatabase } from "./config/database.js";
 import {
@@ -62,6 +63,9 @@ app.get("/api/health", (req, res) => {
     timestamp: new Date().toISOString(),
   });
 });
+
+// Authentication endpoints.
+app.use("/api/auth", authRoutes);
 
 // Unknown routes must be handled before the general error handler.
 app.use(notFoundHandler);
